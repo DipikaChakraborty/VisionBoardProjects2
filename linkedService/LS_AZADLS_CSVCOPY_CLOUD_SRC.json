@@ -3,8 +3,7 @@
 	"properties": {
 		"parameters": {
 			"storage_account_loc": {
-				"type": "string",
-				"defaultValue": "@dataset().storage_account_loc"
+				"type": "string"
 			}
 		},
 		"annotations": [],
