@@ -1,0 +1,25 @@
+{
+	"name": "DS_AZADLS_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_JSON",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "jsontest.json",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "json",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}
