@@ -84,11 +84,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_loc": {
-								"value": "@pipeline().parameters.Trigger",
+								"value": "@pipeline().parameters.storage_account_loc",
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "@pipeline().parameters.Trigger",
+								"value": "@pipeline().parameters.directory",
 								"type": "Expression"
 							}
 						}
@@ -286,6 +286,12 @@
 		],
 		"parameters": {
 			"Trigger": {
+				"type": "string"
+			},
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"directory": {
 				"type": "string"
 			}
 		},
