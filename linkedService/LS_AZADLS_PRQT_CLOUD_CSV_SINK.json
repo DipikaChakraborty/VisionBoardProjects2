@@ -1,0 +1,15 @@
+{
+	"name": "LS_AZADLS_PRQT_CLOUD_CSV_SINK",
+	"properties": {
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		}
+	}
+}
