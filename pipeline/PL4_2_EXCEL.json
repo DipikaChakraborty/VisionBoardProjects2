@@ -149,7 +149,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_AZADLS_PRQT_CLOUD_CSV_SINK",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_loc": {
+								"value": "@pipeline().parameters.storage_account_loc",
+								"type": "Expression"
+							},
+							"directory": {
+								"value": "@pipeline().parameters.directory",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
