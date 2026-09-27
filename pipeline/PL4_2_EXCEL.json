@@ -254,6 +254,12 @@
 		"parameters": {
 			"Trigger": {
 				"type": "string"
+			},
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
 			}
 		},
 		"variables": {
