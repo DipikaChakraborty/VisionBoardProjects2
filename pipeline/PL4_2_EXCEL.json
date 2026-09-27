@@ -100,36 +100,19 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "ExcelSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_AZADLS_CSVCOPY_CLOUD_SRC",
-						"type": "DatasetReference",
-						"parameters": {
-							"storage_account_loc": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcedata",
-								"type": "Expression"
-							},
-							"column_delimiter": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sheetname",
-								"type": "Expression"
-							},
-							"filename": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcefile",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "DS_AZADLS_EXCELCOPY_CLOUD_SRC",
+						"type": "DatasetReference"
 					}
 				]
 			}
