@@ -5,6 +5,17 @@
 			"referenceName": "LS_AZADLS_EXCELCOPY_CLOUD_SRC",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"sheetname": {
+				"type": "string"
+			},
+			"filename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
