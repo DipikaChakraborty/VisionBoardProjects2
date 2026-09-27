@@ -1,10 +1,6 @@
 {
 	"name": "DS_JSON_PRQT",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "DS_JSON_PRQT",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
