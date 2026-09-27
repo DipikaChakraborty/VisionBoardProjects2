@@ -81,7 +81,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_AZADLS_CSVCOPY_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_loc": {
+								"value": "@pipeline().parameters.Trigger",
+								"type": "Expression"
+							},
+							"directory": {
+								"value": "@pipeline().parameters.Trigger",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
