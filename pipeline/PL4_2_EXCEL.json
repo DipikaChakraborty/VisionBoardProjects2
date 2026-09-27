@@ -149,20 +149,21 @@
 				"outputs": [
 					{
 						"referenceName": "DS_AZADLS_PRQT_CLOUD_CSV_SINK",
-						"type": "DatasetReference",
-						"parameters": {
-							"storage_account_loc": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcedata",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
 			{
 				"name": "SP-SUCESS-LOG-ENTRY",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "COPY-EXCEL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -170,7 +171,11 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "LS_AZSQLDB_METADATA",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
