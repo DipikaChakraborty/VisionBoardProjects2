@@ -8,25 +8,31 @@
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_accountKey": {
 			"value": ""
 		},
-		"LS_AZSQLDB_METADATA_password": {
+		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
 			"value": ""
 		},
 		"LS_AZADLS_JSON_accountKey": {
 			"value": ""
 		},
-		"DS_JSON_PRQT_accountKey": {
+		"LS_AZSQLDB_METADATA_password": {
+			"value": ""
+		},
+		"LS_JSON_PRQT_accountKey": {
 			"value": ""
 		},
 		"LS_REST_Parquet_accountKey": {
 			"value": ""
 		},
-		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
-			"value": ""
-		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
+		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
+			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
 		"LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url": {
+			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_AZADLS_JSON_properties_typeProperties_url": {
 			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
 		"LS_AZADLS_PRQT_CLOUD_CSV_SINK_properties_typeProperties_url": {
@@ -41,20 +47,14 @@
 		"LS_AZSQLDB_METADATA_properties_typeProperties_userName": {
 			"value": "access-data-dev"
 		},
-		"LS_AZADLS_JSON_properties_typeProperties_url": {
-			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
-		},
-		"DS_JSON_PRQT_properties_typeProperties_url": {
+		"LS_JSON_PRQT_properties_typeProperties_url": {
 			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
-		},
-		"LS_RestResource_properties_typeProperties_url": {
-			"value": "https://retoolapi.dev/T5TqyZ/data"
 		},
 		"LS_REST_Parquet_properties_typeProperties_url": {
 			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
-		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
-			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		"LS_RestResource_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/T5TqyZ/data"
 		},
 		"containerUri": {
 			"value": ""

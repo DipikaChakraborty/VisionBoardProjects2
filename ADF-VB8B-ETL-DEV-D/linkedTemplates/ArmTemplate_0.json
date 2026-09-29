@@ -11,31 +11,39 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_CLOUD_SRC'"
 		},
-		"LS_AZSQLDB_METADATA_password": {
+		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_AZSQLDB_METADATA'"
+			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_Parquet'"
 		},
 		"LS_AZADLS_JSON_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_JSON'"
 		},
-		"DS_JSON_PRQT_accountKey": {
+		"LS_AZSQLDB_METADATA_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'DS_JSON_PRQT'"
+			"metadata": "Secure string for 'password' of 'LS_AZSQLDB_METADATA'"
+		},
+		"LS_JSON_PRQT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_JSON_PRQT'"
 		},
 		"LS_REST_Parquet_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_Parquet'"
 		},
-		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_Parquet'"
-		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
+		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
 		"LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_AZADLS_JSON_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
@@ -55,25 +63,17 @@
 			"type": "string",
 			"defaultValue": "access-data-dev"
 		},
-		"LS_AZADLS_JSON_properties_typeProperties_url": {
+		"LS_JSON_PRQT_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
-		"DS_JSON_PRQT_properties_typeProperties_url": {
+		"LS_REST_Parquet_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"LS_RestResource_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/T5TqyZ/data"
-		},
-		"LS_REST_Parquet_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
-		},
-		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -103,6 +103,28 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_AZADLS_CSVCOPY_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"storage_account_loc": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_AZADLS_EXCELCOPY_CLOUD_SRC')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -116,6 +138,23 @@
 				"type": "AzureBlobFS",
 				"typeProperties": {
 					"url": "[parameters('LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_AZADLS_JSON')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_AZADLS_JSON_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_AZADLS_JSON_accountKey')]"
+					}
 				}
 			},
 			"dependsOn": []
@@ -161,50 +200,18 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_AZADLS_JSON')]",
+			"name": "[concat(parameters('factoryName'), '/LS_JSON_PRQT')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('LS_AZADLS_JSON_properties_typeProperties_url')]",
+					"url": "[parameters('LS_JSON_PRQT_properties_typeProperties_url')]",
 					"accountKey": {
 						"type": "SecureString",
-						"value": "[parameters('LS_AZADLS_JSON_accountKey')]"
+						"value": "[parameters('LS_JSON_PRQT_accountKey')]"
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_JSON_PRQT')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('DS_JSON_PRQT_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('DS_JSON_PRQT_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_RestResource')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('LS_RestResource_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -227,23 +234,16 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_AZADLS_CSVCOPY_Parquet')]",
+			"name": "[concat(parameters('factoryName'), '/LS_RestResource')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"parameters": {
-					"storage_account_loc": {
-						"type": "string"
-					}
-				},
 				"annotations": [],
-				"type": "AzureBlobFS",
+				"type": "RestService",
 				"typeProperties": {
-					"url": "[parameters('LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_accountKey')]"
-					}
+					"url": "[parameters('LS_RestResource_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -279,7 +279,8 @@
 						"fileName": {
 							"value": "@dataset().filename",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "input"
 					},
 					"columnDelimiter": {
 						"value": "@dataset().column_delimiter",
@@ -293,6 +294,47 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_CSVCOPY_CLOUD_SRC')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_AZADLS_CSVCOPY_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AZADLS_CSVCOPY_Parquet",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"storage_account_loc": {
+							"value": "@dataset().storage_account_loc",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"storage_account_loc": {
+						"type": "string"
+					},
+					"directory": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_CSVCOPY_Parquet')]"
 			]
 		},
 		{
@@ -340,6 +382,36 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_EXCELCOPY_CLOUD_SRC')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_AZADLS_JSON')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AZADLS_JSON",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "jsontest.json",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "json",
+							"type": "Expression"
+						}
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_JSON')]"
 			]
 		},
 		{
@@ -402,42 +474,12 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_AZADLS_JSON')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AZADLS_JSON",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "jsontest.json",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "json",
-							"type": "Expression"
-						}
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_JSON')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_JSON_PRQT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "DS_JSON_PRQT",
+					"referenceName": "LS_JSON_PRQT",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -455,25 +497,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/DS_JSON_PRQT')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_RestResource')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_RestResource",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_RestResource')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_JSON_PRQT')]"
 			]
 		},
 		{
@@ -504,44 +528,21 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_AZADLS_CSVCOPY_Parquet')]",
+			"name": "[concat(parameters('factoryName'), '/DS_RestResource')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "LS_AZADLS_CSVCOPY_Parquet",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"storage_account_loc": {
-							"value": "@dataset().storage_account_loc",
-							"type": "Expression"
-						}
-					}
-				},
-				"parameters": {
-					"storage_account_loc": {
-						"type": "string"
-					},
-					"directory": {
-						"type": "string"
-					}
+					"referenceName": "LS_RestResource",
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@dataset().directory",
-							"type": "Expression"
-						}
-					},
-					"compressionCodec": "snappy"
-				},
+				"type": "RestResource",
+				"typeProperties": {},
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_CSVCOPY_Parquet')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_RestResource')]"
 			]
 		},
 		{
@@ -616,7 +617,7 @@
 										"type": "Expression"
 									},
 									"column_delimiter": {
-										"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.delimiter",
+										"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.delimter",
 										"type": "Expression"
 									},
 									"filename": {
@@ -632,11 +633,11 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"storage_account_loc": {
-										"value": "@pipeline().parameters.storage_account_loc",
+										"value": "@pipeline().parameters.Trigger",
 										"type": "Expression"
 									},
 									"directory": {
-										"value": "@pipeline().parameters.directory",
+										"value": "@pipeline().parameters.Trigger",
 										"type": "Expression"
 									}
 								}
@@ -838,12 +839,6 @@
 				},
 				"parameters": {
 					"Trigger": {
-						"type": "string"
-					},
-					"storage_account_loc": {
-						"type": "string"
-					},
-					"directory": {
 						"type": "string"
 					}
 				},

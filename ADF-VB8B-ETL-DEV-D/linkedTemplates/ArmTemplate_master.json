@@ -11,31 +11,39 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_CLOUD_SRC'"
 		},
-		"LS_AZSQLDB_METADATA_password": {
+		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_AZSQLDB_METADATA'"
+			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_Parquet'"
 		},
 		"LS_AZADLS_JSON_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_JSON'"
 		},
-		"DS_JSON_PRQT_accountKey": {
+		"LS_AZSQLDB_METADATA_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'DS_JSON_PRQT'"
+			"metadata": "Secure string for 'password' of 'LS_AZSQLDB_METADATA'"
+		},
+		"LS_JSON_PRQT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_JSON_PRQT'"
 		},
 		"LS_REST_Parquet_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_Parquet'"
 		},
-		"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_AZADLS_CSVCOPY_Parquet'"
-		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
+		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
 		"LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_AZADLS_JSON_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
@@ -55,25 +63,17 @@
 			"type": "string",
 			"defaultValue": "access-data-dev"
 		},
-		"LS_AZADLS_JSON_properties_typeProperties_url": {
+		"LS_JSON_PRQT_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
-		"DS_JSON_PRQT_properties_typeProperties_url": {
+		"LS_REST_Parquet_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"LS_RestResource_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/T5TqyZ/data"
-		},
-		"LS_REST_Parquet_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
-		},
-		"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -105,26 +105,32 @@
 					"LS_AZADLS_CSVCOPY_CLOUD_SRC_accountKey": {
 						"value": "[parameters('LS_AZADLS_CSVCOPY_CLOUD_SRC_accountKey')]"
 					},
-					"LS_AZSQLDB_METADATA_password": {
-						"value": "[parameters('LS_AZSQLDB_METADATA_password')]"
+					"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
+						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_accountKey')]"
 					},
 					"LS_AZADLS_JSON_accountKey": {
 						"value": "[parameters('LS_AZADLS_JSON_accountKey')]"
 					},
-					"DS_JSON_PRQT_accountKey": {
-						"value": "[parameters('DS_JSON_PRQT_accountKey')]"
+					"LS_AZSQLDB_METADATA_password": {
+						"value": "[parameters('LS_AZSQLDB_METADATA_password')]"
+					},
+					"LS_JSON_PRQT_accountKey": {
+						"value": "[parameters('LS_JSON_PRQT_accountKey')]"
 					},
 					"LS_REST_Parquet_accountKey": {
 						"value": "[parameters('LS_REST_Parquet_accountKey')]"
 					},
-					"LS_AZADLS_CSVCOPY_Parquet_accountKey": {
-						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_accountKey')]"
-					},
 					"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 						"value": "[parameters('LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url')]"
 					},
+					"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
+						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url')]"
+					},
 					"LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url": {
 						"value": "[parameters('LS_AZADLS_EXCELCOPY_CLOUD_SRC_properties_typeProperties_url')]"
+					},
+					"LS_AZADLS_JSON_properties_typeProperties_url": {
+						"value": "[parameters('LS_AZADLS_JSON_properties_typeProperties_url')]"
 					},
 					"LS_AZADLS_PRQT_CLOUD_CSV_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_AZADLS_PRQT_CLOUD_CSV_SINK_properties_typeProperties_url')]"
@@ -138,20 +144,14 @@
 					"LS_AZSQLDB_METADATA_properties_typeProperties_userName": {
 						"value": "[parameters('LS_AZSQLDB_METADATA_properties_typeProperties_userName')]"
 					},
-					"LS_AZADLS_JSON_properties_typeProperties_url": {
-						"value": "[parameters('LS_AZADLS_JSON_properties_typeProperties_url')]"
-					},
-					"DS_JSON_PRQT_properties_typeProperties_url": {
-						"value": "[parameters('DS_JSON_PRQT_properties_typeProperties_url')]"
-					},
-					"LS_RestResource_properties_typeProperties_url": {
-						"value": "[parameters('LS_RestResource_properties_typeProperties_url')]"
+					"LS_JSON_PRQT_properties_typeProperties_url": {
+						"value": "[parameters('LS_JSON_PRQT_properties_typeProperties_url')]"
 					},
 					"LS_REST_Parquet_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_Parquet_properties_typeProperties_url')]"
 					},
-					"LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url": {
-						"value": "[parameters('LS_AZADLS_CSVCOPY_Parquet_properties_typeProperties_url')]"
+					"LS_RestResource_properties_typeProperties_url": {
+						"value": "[parameters('LS_RestResource_properties_typeProperties_url')]"
 					}
 				}
 			},

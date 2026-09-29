@@ -419,7 +419,8 @@
 								"referenceName": "DS_AZSQLDB_METADATA",
 								"type": "DatasetReference",
 								"parameters": {}
-							}
+							},
+							"firstRowOnly": true
 						}
 					},
 					{
@@ -576,7 +577,12 @@
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
-							"parameters": {}
+							"parameters": {
+								"Trigger": {
+									"value": "@pipeline().parameters.Trigger",
+									"type": "Expression"
+								}
+							}
 						}
 					}
 				],
@@ -589,9 +595,6 @@
 					}
 				},
 				"variables": {
-					"Mapping": {
-						"type": "String"
-					},
 					"Trigger_variable": {
 						"type": "String"
 					}
