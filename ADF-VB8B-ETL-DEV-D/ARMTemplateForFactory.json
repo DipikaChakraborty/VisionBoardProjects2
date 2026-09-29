@@ -237,12 +237,20 @@
 									"value": "api",
 									"activities": [
 										{
-											"name": "Wait1",
-											"type": "Wait",
+											"name": "EXEC_RESTAPI_PL",
+											"type": "ExecutePipeline",
 											"dependsOn": [],
+											"policy": {
+												"secureInput": false
+											},
 											"userProperties": [],
 											"typeProperties": {
-												"waitTimeInSeconds": 1
+												"pipeline": {
+													"referenceName": "PL_RESTAPI",
+													"type": "PipelineReference"
+												},
+												"waitOnCompletion": true,
+												"parameters": {}
 											}
 										}
 									]
@@ -319,6 +327,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_AZSQLDB_METADATA')]",
 				"[concat(variables('factoryId'), '/pipelines/PL3_CLOUDSG_CSV_EXCEL')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_RESTAPI')]",
 				"[concat(variables('factoryId'), '/pipelines/PL_JSON')]"
 			]
 		},
@@ -1602,7 +1611,8 @@
 						"folderPath": {
 							"value": "@concat(\n    'rest/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "output"
 					},
 					"compressionCodec": "snappy"
 				},
