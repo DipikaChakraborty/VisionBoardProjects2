@@ -327,7 +327,8 @@
 						"folderPath": {
 							"value": "@dataset().directory",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "output"
 					},
 					"compressionCodec": "snappy"
 				},
