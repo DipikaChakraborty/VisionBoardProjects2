@@ -84,11 +84,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_loc": {
-								"value": "@pipeline().parameters.Trigger",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdata",
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "@pipeline().parameters.Trigger",
+								"value": "@concat(\r\n    activity('LKUP_JOB_DETAILS').output.firstRow.targetdirectory, '/',\r\n    formatDateTime(utcNow(), 'yyyy'), '/',\r\n    formatDateTime(utcNow(), 'MM'), '/',\r\n    formatDateTime(utcNow(), 'dd'), '/'\r\n)",
 								"type": "Expression"
 							}
 						}
