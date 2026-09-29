@@ -117,6 +117,27 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "json",
+							"activities": [
+								{
+									"name": "EXEC_JSON_PL",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_JSON",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						}
 					]
 				}
