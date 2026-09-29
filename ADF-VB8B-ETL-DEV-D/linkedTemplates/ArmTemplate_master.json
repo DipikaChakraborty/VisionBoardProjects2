@@ -49,7 +49,7 @@
 		},
 		"LS_AZADLS_PRQT_CLOUD_CSV_SINK_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"LS_AZSQLDB_METADATA_properties_typeProperties_server": {
 			"type": "string",

@@ -49,7 +49,7 @@
 		},
 		"LS_AZADLS_PRQT_CLOUD_CSV_SINK_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"LS_AZSQLDB_METADATA_properties_typeProperties_server": {
 			"type": "string",
@@ -894,11 +894,11 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"storage_account_loc": {
-										"value": "@pipeline().parameters.storage_account_loc",
+										"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdata",
 										"type": "Expression"
 									},
 									"directory": {
-										"value": "@pipeline().parameters.directory",
+										"value": "@concat(activity('LKUP_JOB_DETAILS').output.firstRow.targetdirectory, '/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd'), '/'\n)",
 										"type": "Expression"
 									}
 								}
@@ -1489,7 +1489,8 @@
 						"folderPath": {
 							"value": "@dataset().directory",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "output"
 					},
 					"compressionCodec": "snappy"
 				},
