@@ -31,10 +31,7 @@
 			},
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().filename",
-					"type": "Expression"
-				},
+				"fileName": "products_dataset.xlsx",
 				"folderPath": "excel",
 				"fileSystem": "input"
 			}
