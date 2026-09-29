@@ -406,7 +406,8 @@
 						"folderPath": {
 							"value": "json",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "input"
 					}
 				},
 				"schema": {}
@@ -492,7 +493,8 @@
 						"folderPath": {
 							"value": "@concat(\n    'json/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "output"
 					},
 					"compressionCodec": "snappy"
 				},

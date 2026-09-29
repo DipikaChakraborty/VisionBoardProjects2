@@ -274,6 +274,28 @@
 											}
 										}
 									]
+								},
+								{
+									"value": "json",
+									"activities": [
+										{
+											"name": "EXEC_JSON_PL",
+											"type": "ExecutePipeline",
+											"dependsOn": [],
+											"policy": {
+												"secureInput": false
+											},
+											"userProperties": [],
+											"typeProperties": {
+												"pipeline": {
+													"referenceName": "PL_JSON",
+													"type": "PipelineReference"
+												},
+												"waitOnCompletion": true,
+												"parameters": {}
+											}
+										}
+									]
 								}
 							]
 						}
@@ -296,7 +318,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_AZSQLDB_METADATA')]",
-				"[concat(variables('factoryId'), '/pipelines/PL3_CLOUDSG_CSV_EXCEL')]"
+				"[concat(variables('factoryId'), '/pipelines/PL3_CLOUDSG_CSV_EXCEL')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_JSON')]"
 			]
 		},
 		{
@@ -357,6 +380,28 @@
 									"activities": [
 										{
 											"name": "Exec_file_CSV",
+											"type": "ExecutePipeline",
+											"dependsOn": [],
+											"policy": {
+												"secureInput": false
+											},
+											"userProperties": [],
+											"typeProperties": {
+												"pipeline": {
+													"referenceName": "PL4_FILETYPE_CSV_EXCEL",
+													"type": "PipelineReference"
+												},
+												"waitOnCompletion": true,
+												"parameters": {
+													"Trigger": {
+														"value": "@pipeline().parameters.Trigger",
+														"type": "Expression"
+													}
+												}
+											}
+										},
+										{
+											"name": "Exec_file_CSV_copy1",
 											"type": "ExecutePipeline",
 											"dependsOn": [],
 											"policy": {
@@ -1442,7 +1487,8 @@
 						"folderPath": {
 							"value": "json",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "input"
 					}
 				},
 				"schema": {}
@@ -1528,7 +1574,8 @@
 						"folderPath": {
 							"value": "@concat(\n    'json/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "output"
 					},
 					"compressionCodec": "snappy"
 				},
