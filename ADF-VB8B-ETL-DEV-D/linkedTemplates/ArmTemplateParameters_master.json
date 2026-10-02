@@ -56,6 +56,9 @@
 		"LS_RestResource_properties_typeProperties_url": {
 			"value": "https://retoolapi.dev/T5TqyZ/data"
 		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"value": "Tr_sample_csv"
+		},
 		"containerUri": {
 			"value": ""
 		},
