@@ -101,12 +101,25 @@
 							"value": "sql",
 							"activities": [
 								{
-									"name": "Wait2",
-									"type": "Wait",
+									"name": "EXEC_SQL",
+									"type": "ExecutePipeline",
 									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
 									"userProperties": [],
 									"typeProperties": {
-										"waitTimeInSeconds": 1
+										"pipeline": {
+											"referenceName": "PL_SQL",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"Trigger": {
+												"value": "@pipeline().parameters.Trigger",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -115,7 +128,7 @@
 							"value": "sftp",
 							"activities": [
 								{
-									"name": "EXEC_SQL",
+									"name": "EXEC_SFTP",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"policy": {
