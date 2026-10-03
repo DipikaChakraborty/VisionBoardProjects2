@@ -53,6 +53,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"Trigger": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
