@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SNOWFLAKE_PARQUET'"
 		},
+		"LS_SQL_Parquet_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_Parquet'"
+		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
@@ -86,6 +90,10 @@
 		"LS_SNOW_BLOB_PARQUET_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'LS_SNOW_BLOB_PARQUET'"
+		},
+		"LS_SQL_Parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -292,6 +300,33 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"sasUri": "[parameters('LS_SNOW_BLOB_PARQUET_sasUri')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SelfintegrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SQL_Parquet_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_Parquet_accountKey')]"
+					}
 				}
 			},
 			"dependsOn": []
@@ -550,52 +585,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_JSON_PRQT')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_REST_Parquet')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_REST_Parquet",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@concat(\n    'rest/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
-							"type": "Expression"
-						},
-						"fileSystem": "output"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_REST_Parquet')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_RestResource')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_RestResource",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_RestResource')]"
 			]
 		}
 	]

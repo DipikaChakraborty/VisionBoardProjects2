@@ -26,6 +26,12 @@
 		"LS_SNOWFLAKE_PARQUET_password": {
 			"value": ""
 		},
+		"LS_SQLSERVER_password": {
+			"value": ""
+		},
+		"LS_SQL_Parquet_accountKey": {
+			"value": ""
+		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
@@ -67,6 +73,18 @@
 		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
+		},
+		"LS_SQLSERVER_properties_typeProperties_server": {
+			"value": ".\\SQLEXPRESS01"
+		},
+		"LS_SQLSERVER_properties_typeProperties_database": {
+			"value": "vbadeproject"
+		},
+		"LS_SQLSERVER_properties_typeProperties_userName": {
+			"value": "VisionBoard"
+		},
+		"LS_SQL_Parquet_properties_typeProperties_url": {
+			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""
