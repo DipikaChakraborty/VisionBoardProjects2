@@ -32,6 +32,12 @@
 		"LS_SQL_Parquet_accountKey": {
 			"value": ""
 		},
+		"LS_SFTP_PARQ_accountKey": {
+			"value": ""
+		},
+		"LS_SFTP_SINK_PARQ_accountKey": {
+			"value": ""
+		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
 		},
@@ -71,9 +77,6 @@
 		"LS_SNOW_BLOB_PARQUET_sasUri": {
 			"value": ""
 		},
-		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
-			"value": "Tr_sample_csv"
-		},
 		"LS_SQLSERVER_properties_typeProperties_server": {
 			"value": ".\\SQLEXPRESS01"
 		},
@@ -84,6 +87,15 @@
 			"value": "VisionBoard"
 		},
 		"LS_SQL_Parquet_properties_typeProperties_url": {
+			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"value": "Tr_sample_csv"
+		},
+		"LS_SFTP_PARQ_properties_typeProperties_url": {
+			"value": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
 			"value": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
 		"containerUri": {

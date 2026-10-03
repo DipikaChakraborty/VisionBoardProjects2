@@ -39,6 +39,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_Parquet'"
 		},
+		"LS_SFTP_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PARQ'"
+		},
+		"LS_SFTP_SINK_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_SINK_PARQ'"
+		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
@@ -92,6 +100,14 @@
 			"metadata": "Secure string for 'sasUri' of 'LS_SNOW_BLOB_PARQUET'"
 		},
 		"LS_SQL_Parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		}
@@ -305,16 +321,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SelfintegrationRuntime1')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/LS_SQL_Parquet')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -326,6 +332,50 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('LS_SQL_Parquet_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SelfintegrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SFTP_PARQ')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SFTP_PARQ_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SFTP_PARQ_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SFTP_SINK_PARQ')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SFTP_SINK_PARQ_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SFTP_SINK_PARQ_accountKey')]"
 					}
 				}
 			},
@@ -539,52 +589,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_AZADLS_PRQT_CLOUD_CSV_SINK')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_AZSQLDB_METADATA')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AZSQLDB_METADATA",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AZSQLDB_METADATA')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_JSON_PRQT')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_JSON_PRQT",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@concat(\n    'json/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
-							"type": "Expression"
-						},
-						"fileSystem": "output"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_JSON_PRQT')]"
 			]
 		}
 	]
