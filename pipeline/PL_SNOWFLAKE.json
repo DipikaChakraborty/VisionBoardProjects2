@@ -24,13 +24,19 @@
 					"sink": {
 						"type": "ParquetSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": false,
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_SNOW_BLOB_PARQUET",
+							"type": "LinkedServiceReference"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
@@ -48,7 +54,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_SNOW_BLOB_PARQUET",
+						"referenceName": "DS_BLOB_PARQ",
 						"type": "DatasetReference"
 					}
 				]
