@@ -30,14 +30,7 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": true,
-					"stagingSettings": {
-						"linkedServiceName": {
-							"referenceName": "LS_SNOW_BLOB_PARQUET",
-							"type": "LinkedServiceReference"
-						},
-						"path": ""
-					},
+					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
