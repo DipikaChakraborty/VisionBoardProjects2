@@ -31,6 +31,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_Parquet'"
 		},
+		"LS_SFTP_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PARQ'"
+		},
+		"LS_SFTP_SINK_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_SINK_PARQ'"
+		},
 		"LS_SNOWFLAKE_PARQUET_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SNOWFLAKE_PARQUET'"
@@ -43,13 +51,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_Parquet'"
 		},
-		"LS_SFTP_PARQ_accountKey": {
+		"LS_BLOB_PARQ_accountKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PARQ'"
-		},
-		"LS_SFTP_SINK_PARQ_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_SINK_PARQ'"
+			"metadata": "Secure string for 'accountKey' of 'LS_BLOB_PARQ'"
 		},
 		"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 			"type": "string",
@@ -95,6 +99,14 @@
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/T5TqyZ/data"
 		},
+		"LS_SFTP_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
+		},
+		"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
+		},
 		"LS_SNOWFLAKE_PARQUET_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "DBAZURESNOW"
@@ -123,11 +135,7 @@
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
-		"LS_SFTP_PARQ_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevisionboardraw01d.dfs.core.windows.net/"
-		},
-		"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
+		"LS_BLOB_PARQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbsrc01d.dfs.core.windows.net/"
 		},
@@ -176,17 +184,20 @@
 					"LS_REST_Parquet_accountKey": {
 						"value": "[parameters('LS_REST_Parquet_accountKey')]"
 					},
+					"LS_SFTP_PARQ_accountKey": {
+						"value": "[parameters('LS_SFTP_PARQ_accountKey')]"
+					},
+					"LS_SFTP_SINK_PARQ_accountKey": {
+						"value": "[parameters('LS_SFTP_SINK_PARQ_accountKey')]"
+					},
 					"LS_SNOWFLAKE_PARQUET_password": {
 						"value": "[parameters('LS_SNOWFLAKE_PARQUET_password')]"
 					},
 					"LS_SQL_Parquet_accountKey": {
 						"value": "[parameters('LS_SQL_Parquet_accountKey')]"
 					},
-					"LS_SFTP_PARQ_accountKey": {
-						"value": "[parameters('LS_SFTP_PARQ_accountKey')]"
-					},
-					"LS_SFTP_SINK_PARQ_accountKey": {
-						"value": "[parameters('LS_SFTP_SINK_PARQ_accountKey')]"
+					"LS_BLOB_PARQ_accountKey": {
+						"value": "[parameters('LS_BLOB_PARQ_accountKey')]"
 					},
 					"LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url": {
 						"value": "[parameters('LS_AZADLS_CSVCOPY_CLOUD_SRC_properties_typeProperties_url')]"
@@ -221,6 +232,12 @@
 					"LS_RestResource_properties_typeProperties_url": {
 						"value": "[parameters('LS_RestResource_properties_typeProperties_url')]"
 					},
+					"LS_SFTP_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_PARQ_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_SINK_PARQ_properties_typeProperties_url')]"
+					},
 					"LS_SNOWFLAKE_PARQUET_properties_typeProperties_database": {
 						"value": "[parameters('LS_SNOWFLAKE_PARQUET_properties_typeProperties_database')]"
 					},
@@ -230,11 +247,8 @@
 					"LS_SQL_Parquet_properties_typeProperties_url": {
 						"value": "[parameters('LS_SQL_Parquet_properties_typeProperties_url')]"
 					},
-					"LS_SFTP_PARQ_properties_typeProperties_url": {
-						"value": "[parameters('LS_SFTP_PARQ_properties_typeProperties_url')]"
-					},
-					"LS_SFTP_SINK_PARQ_properties_typeProperties_url": {
-						"value": "[parameters('LS_SFTP_SINK_PARQ_properties_typeProperties_url')]"
+					"LS_BLOB_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_BLOB_PARQ_properties_typeProperties_url')]"
 					}
 				}
 			},
